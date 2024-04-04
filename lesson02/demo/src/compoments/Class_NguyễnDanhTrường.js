@@ -31,7 +31,7 @@ export default class Class_NguyễnDanhTrường extends Component {
         <h3>time:{this.props.time}</h3>
         <hr/>
         <h3>state:
-            FullName:{this.state.fullName}
+            FullName:{this.state.fullName} -
             class:{this.state.class}
 
         </h3>
