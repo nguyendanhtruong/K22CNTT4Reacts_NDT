@@ -18,6 +18,7 @@ handlechange=(event)=>{
 handlesubmit =(ev)=>{
    console.log(ev);
    ev.preventdefault();
+   alert(this.state.studentname)
 }
   render() {
     return (

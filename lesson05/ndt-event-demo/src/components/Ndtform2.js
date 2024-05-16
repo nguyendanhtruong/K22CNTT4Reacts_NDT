@@ -25,7 +25,7 @@ export default class Ndtform2 extends Component {
     return (
       <div>
        <form onSubmit={this.ndthandlesubmit}> 
-        <label>course</label>
+        <label>course:</label>
         <select value={this.state.course}
           onChange={this.ndthandlechange}>
           <option value={"ndt-html"}>ndt-html</option>

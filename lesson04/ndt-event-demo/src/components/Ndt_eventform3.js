@@ -13,12 +13,18 @@ export default class Ndt_eventform3 extends Component {
             name:"k22cntt4"
         })
     }
+    HashChangejob=()=>{
+        this.setState({
+            name:"công nghê phần mềm"
+        })
+    }
   render() {
     return (
       <div class ='alert alert-primary'>
         <h2>thay dữ liệu</h2>
         <p>du lieu:{this.state.name} - {this.state.job}</p>
         <button onclick={this.HashChangeName}>thay đổi name</button>
+        <button onclick={this.HashChangejob}>thay doi job</button>
       </div>
     )
   }
