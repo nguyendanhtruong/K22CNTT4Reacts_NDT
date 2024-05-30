@@ -1,6 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
-//import Ndtproductaddoredit from './components/Ndtproductaddoredit'; 
+import {React, useState} from 'react';
 import NdtProduct from './components/NdtProduct';
 import Ndtproductaddoredit from './components/Ndtproductaddoredit';
 
@@ -28,16 +27,16 @@ function NdtApp() {
   ];
 
   // Hook UseState để quản lý trạng thái danh sách sản phẩm
-  const [ndtProductState] = useState(ndt_Products);
-  const ndtHandleSubmit =(ndtProduct)=>{
-    console.log("AddOrEdit:",ndtProduct);
-    setNdtProductState((Ndtprev) =>{
-      return[
-      ...Ndtprev,
-      ndtProduct
-      ]
-    }
-    )
+  const [ndtProductState, setNdtProductState] = useState(ndt_Products);
+
+  const ndtHandleSubmit = (ndtProduct) => {
+    console.log("AddOrEdit:", ndtProduct);
+    setNdtProductState((Ndtprev) => {
+      return [
+        ...Ndtprev,
+        ndtProduct
+      ];
+    });
   }
 
   return (
@@ -45,8 +44,7 @@ function NdtApp() {
       <h1 className="text-center my-3">Xử lý chức năng CRUD - HOOK</h1>
       <hr />
       <NdtProduct renderNdtProduct={ndtProductState} />
-      <Ndtproductaddoredit ndtOnSubmit={ndtHandleSubmit}/>
-      
+      <Ndtproductaddoredit ndtOnSubmit={ndtHandleSubmit} />
     </div>
   );
 }
