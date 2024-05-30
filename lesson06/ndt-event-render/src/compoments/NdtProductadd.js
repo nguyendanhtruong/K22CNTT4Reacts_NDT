@@ -9,6 +9,18 @@ export default class NdtProductadd extends Component {
             status:0
         }
     }
+    ndthandlechange =(event)=>{
+        let name =event.target.name;
+        let value =event.target.value;
+        this.setState({
+            [name]:value
+        })
+    }
+    //submit form 
+    ndthandlesubmit =(ev)=>{
+       ev.preventdefault();
+       this.props.onsubmit(this.state);
+    }
     render() {
     return (
       <div>
@@ -23,6 +35,7 @@ export default class NdtProductadd extends Component {
          className="form-control"
          name='id'
          value={this.state.id}
+         onChange={this.ndthandlechange}
   />    
 </div>
 <div className="input-group mb-3">
@@ -34,6 +47,7 @@ export default class NdtProductadd extends Component {
          className="form-control"
          name='title'
          value={this.state.title}
+         onChange={this.ndthandlechange}
   />    
 </div>
 <div className="input-group mb-3">
@@ -45,9 +59,10 @@ export default class NdtProductadd extends Component {
          className="form-control"
          name='status'
          value={this.state.status}
+         onChange={this.ndthandlechange}
   />    
 </div>
-<button className='btn btn-success'>ghi lai</button>
+<button className='btn btn-success'onClick={this.ndthandlesubmit}>ghi lai</button>
 </form>
       </div>
     )

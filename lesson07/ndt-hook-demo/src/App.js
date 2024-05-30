@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import Ndtusestate from './components/Ndtusestate'
 import NdtUseEffect from './components/NdtUseEffect'
 import NdtUseContext from './components/NdtUseContext'
-
 import'./App.css'
-
 export default class App extends Component {
   render() {
     return (
@@ -17,6 +15,7 @@ export default class App extends Component {
         <NdtUseEffect/>
         <hr/>
         <NdtUseContext/>
+        <hr/>
         
       </div>
     
