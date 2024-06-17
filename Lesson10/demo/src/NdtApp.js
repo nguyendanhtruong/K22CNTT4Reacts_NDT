@@ -37,10 +37,14 @@ function NdtApp() {
     setNdtCategoryIsForm(param);
   }
   const ndtHandleCategorySubmit=(param)=>{
+    let id =ndtCategories[ndtCategories.length-1].NdtId;
+    console.log ("ma",id);
+    param.NdtId=id+1;
         ndtCategories.push(param);
         setNdtCategories((prev)=>{
           return [...prev];
         })
+        setNdtCategoryIsForm(false);
   }
   return (
     <div className="container border my-3">
