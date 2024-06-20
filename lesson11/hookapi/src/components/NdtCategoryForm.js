@@ -8,38 +8,40 @@ const[ndtCategoryStatus,setNdtCategoryStatus]= useState(true);
 
 
 useEffect(()=>{
-    setNdtId(rendenrNdtCategory.NdtIddtId);
-    setNdtCategoryName(rendenrNdtCategory.NdtCategoryName);
-    setNdtId(rendenrNdtCategory.NdtCategoryStatus);
 
-});
+  if (rendenrNdtCategory) {
+            setNdtId(rendenrNdtCategory.NdtId);
+            setNdtCategoryName(rendenrNdtCategory.NdtCategoryName);
+            setNdtCategoryStatus(rendenrNdtCategory.NdtCategoryStatus);
+        }
+    }, [rendenrNdtCategory]);
+
     const ndtHandleClose =()=>{ 
         oncloseForm(false);
-    }
+    };
     const ndtHandleSubmit= async (event)=>{
         event.preventDefault();
-        if(ndtId ===0 ){// them
+
         let ndtCategory = {
-            NdtId:0,
-            NdtCategoryName:ndtCategoryName,
-            NdtCategoryStatus:ndtCategoryStatus,
+            NdtId: ndtId === "0" ? 0 : ndtId,
+            NdtCategoryName: ndtCategoryName,
+            NdtCategoryStatus: ndtCategoryStatus,
+        };
+        try {
+            if (ndtId === "0") { // Add new category
+                console.log("POST URL: NdtCategory", ndtCategory);
+                await axios.post("NdtCategory", ndtCategory);
+            } else { // Update existing category
+                console.log(`PUT URL: NdtCategory/${ndtId}`, ndtCategory);
+                await axios.put(`NdtCategory/${ndtId}`, ndtCategory);
+            }
+            onCategorySubmit(ndtCategory);
+        } catch (error) {
+            console.error("Error submitting category:", error);
         }
-        console.log("NdtCategory",ndtCategory);
-        await axios.post("NdtCategory",ndtCategory);
-        onCategorySubmit(ndtCategory);
-     
-    }else{//sua
-        let ndtCategory = {
-            NdtId:ndtId,
-            NdtCategoryName:ndtCategoryName,
-            NdtCategoryStatus:ndtCategoryStatus,
-        }
-        console.log("NdtCategory",ndtCategory);
-        await axios.put(`NdtCategory/${rendenrNdtCategory.ndtId}`,ndtCategory);
-        onCategorySubmit(ndtCategory);
-    }
+    };
     
-}
+
 
     return (
         <div>
