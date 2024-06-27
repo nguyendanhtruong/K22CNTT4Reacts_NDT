@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
-
-import NdtApp from './NdtApp';
+import NdtApp from '../../../lesson09/lesson09/src/NdtApp';
 
 test('renders learn react link', () => {
   render(<NdtApp />);

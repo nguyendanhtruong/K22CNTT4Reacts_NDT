@@ -38,7 +38,7 @@ function NdtApp() {
   }
   const ndtHandleCategorySubmit=(param)=>{
     let id =ndtCategories[ndtCategories.length-1].NdtId;
-    console.log ("ma",id);
+    console.log ("ma",id, param);
     param.NdtId=id+1;
         ndtCategories.push(param);
         setNdtCategories((prev)=>{

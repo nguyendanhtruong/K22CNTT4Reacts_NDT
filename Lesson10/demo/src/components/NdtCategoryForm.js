@@ -13,21 +13,22 @@ const[ndtCategoryStatus,setNdtCategoryStatus]= useState(true);
     const ndtHandleSubmit= async (event)=>{
         event.preventDefault();
         let ndtCategory = {
-            ndtId:0,
-            ndtCategoryName:ndtCategoryName,
-            ndtCategoryStatus:ndtCategoryStatus,
+            NdtId:0,
+            NdtCategoryName:ndtCategoryName,
+            NdtCategoryStatus:ndtCategoryStatus,
         }
-        console.log ("ndtCategory",ndtCategory);
-        await axios.post("NdtCategory",ndtCategory);
+        const response = await axios.post("NdtCategory", ndtCategory);
+        // const newCategory = response.data;
         onCategorySubmit(ndtCategory);
     }
+    
     return (
         <div>
             <form>
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">Category Name</span>
                     <input type="text" className="form-control" 
-                      name='ndtCategoryName'
+                      name='NdtCategoryName'
                       value={ndtCategoryName}
                       onChange={(ev)=>setNdtCategoryName(ev.target.value)}
 
@@ -37,7 +38,7 @@ const[ndtCategoryStatus,setNdtCategoryStatus]= useState(true);
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon2">Category Status </span>
                     <select className='form-control'
-                    name='ndtCategoryStatus'
+                    name='NdtCategoryStatus'
                      value={ndtCategoryStatus}
                      onChange={(ev)=>setNdtCategoryStatus(ev.target.value)}
                      >
